@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Domain.Enum;
+using Domain.ValueObjects;
+using System;
 
 namespace Domain.Entity
 {
@@ -6,15 +8,13 @@ namespace Domain.Entity
     {
         public Guid Id { get; set; }
 
-        public string PrimeiroNome { get; set; }
+        public Nome Nome { get; set; }
 
-        public string UltimoNome { get; set; }
+        public Email Email { get; set; }
 
-        public string Email { get; set; }
+        public string Senha { get; private set; }
 
-        public string Senha { get; set; }
-
-        public int Status { get; set; }
+        public EnumSituacaoJogador Status { get; set; }
 
 
     }
