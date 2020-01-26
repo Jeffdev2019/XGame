@@ -1,21 +1,39 @@
 ﻿using Domain.Arguments.Jogador;
+using Domain.Interfaces.Repositories;
 using Domain.Interfaces.Services;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Domain.Services
 {
     public class ServiceJogador : IServiceJogadorcs
     {
+        private readonly IRepositoryJogador _repositoryJogador;
+        public ServiceJogador()
+        {
+
+        }
+        public ServiceJogador(IRepositoryJogador repositoryJogador)
+        {
+            this._repositoryJogador = repositoryJogador;
+        }
+
         public AdicionarJogadorResponse AdicionarJogador(AdicionarJogadorRequest request)
         {
-            throw new NotImplementedException();
+            Guid Id = _repositoryJogador.AdicionarJogador(request);
+
+            return new AdicionarJogadorResponse() { Id = Id, Message = "Operãção Realizada com o Sucesso!!!" };
         }
 
         public AutenticarJogadorResponse AutenticarJogador(AutenticarJogadorRequest request)
         {
-            throw new NotImplementedException();
+            if (request == null)
+            {
+                throw new Exception("AutenticarJogadorResponse é obrigatorio");
+            }
+
+            var Response = _repositoryJogador.AutenticarJogador(request);
+
+            return Response;
         }
     }
 }
