@@ -1,8 +1,19 @@
-﻿namespace Domain.Arguments.Jogador
+﻿using Domain.ValueObjects;
+using prmToolkit.NotificationPattern;
+
+namespace Domain.Arguments.Jogador
 {
-    public class AutenticarJogadorRequest
+    public class AutenticarJogadorRequest : Notifiable
     {
-        public string Email { get; set; }
+        public AutenticarJogadorRequest(string email, string senha)
+        {
+            Email = new Email(email);
+            Senha = senha;//implememnt
+
+            AddNotifications(Email);
+        }
+
+        public Email Email { get; set; }
 
         public string Senha { get; set; }
 

@@ -1,12 +1,13 @@
 ﻿using Domain.Arguments.Jogador;
+using Domain.Entity;
 using System;
 
 namespace Domain.Interfaces.Repositories
 {
     public interface IRepositoryJogador
     {
-        AutenticarJogadorResponse AutenticarJogador(AutenticarJogadorRequest request);
+        AutenticarJogadorResponse AutenticarJogador(string email, string senha);
 
-        Guid AdicionarJogador(AdicionarJogadorRequest request);
+        Guid AdicionarJogador(Jogador jogador);
     }
 }

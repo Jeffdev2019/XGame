@@ -5,7 +5,11 @@ VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{87E49E4D-275C-4413-BA86-472E6A3368DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppConsole", "AppConsole\AppConsole.csproj", "{25748E9B-77CA-4B98-A97D-3C084A8262A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppConsole", "AppConsole\AppConsole.csproj", "{25748E9B-77CA-4B98-A97D-3C084A8262A4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LINQ", "LINQ", "{B8B0E853-1E83-4DD9-8484-31112FE0CAD1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTeste", "LINQ.Console\ConsoleTeste.csproj", "{A7ABE15E-8C00-4479-9E9D-E4D8E98DF109}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,9 +25,16 @@ Global
 		{25748E9B-77CA-4B98-A97D-3C084A8262A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{25748E9B-77CA-4B98-A97D-3C084A8262A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{25748E9B-77CA-4B98-A97D-3C084A8262A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7ABE15E-8C00-4479-9E9D-E4D8E98DF109}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7ABE15E-8C00-4479-9E9D-E4D8E98DF109}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7ABE15E-8C00-4479-9E9D-E4D8E98DF109}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7ABE15E-8C00-4479-9E9D-E4D8E98DF109}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A7ABE15E-8C00-4479-9E9D-E4D8E98DF109} = {B8B0E853-1E83-4DD9-8484-31112FE0CAD1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6A41C5FE-CD12-47C4-9DDC-DA1244AC6BBF}

@@ -1,11 +1,15 @@
 ﻿using Domain.Arguments.Jogador;
+using Domain.Entity;
 using Domain.Interfaces.Repositories;
 using Domain.Interfaces.Services;
+using Domain.Resources;
+using Domain.ValueObjects;
+using prmToolkit.NotificationPattern;
 using System;
 
 namespace Domain.Services
 {
-    public class ServiceJogador : IServiceJogadorcs
+    public class ServiceJogador : Notifiable, IServiceJogadorcs
     {
         private readonly IRepositoryJogador _repositoryJogador;
         public ServiceJogador()
@@ -19,7 +23,13 @@ namespace Domain.Services
 
         public AdicionarJogadorResponse AdicionarJogador(AdicionarJogadorRequest request)
         {
-            Guid Id = _repositoryJogador.AdicionarJogador(request);
+
+            Jogador jogador = new Jogador();
+            jogador.Email = request.Email;
+            jogador.Nome = request.Nome;
+            jogador.Status = Enum.EnumSituacaoJogador.EmAndamento;
+
+            Guid Id = _repositoryJogador.AdicionarJogador(jogador);
 
             return new AdicionarJogadorResponse() { Id = Id, Message = "Operãção Realizada com o Sucesso!!!" };
         }
@@ -28,10 +38,21 @@ namespace Domain.Services
         {
             if (request == null)
             {
-                throw new Exception("AutenticarJogadorResponse é obrigatorio");
+                AddNotification("AutenticarJogadorResponse", string.Format(Message.X0_E_OBRIGATORIO, "AutenticarJogadorResponse"));
             }
 
-            var Response = _repositoryJogador.AutenticarJogador(request);
+            Jogador jogador = new Jogador(request.Email, request.Senha);
+
+            AddNotifications(jogador, request.Email);
+
+            if (jogador.IsInvalid())// verifica se obejto é valido.
+            {
+                return null;
+            }
+
+            //var Response = _repositoryJogador.AutenticarJogador(jogador.Email.Endereco, jogador.Senha);
+
+            AutenticarJogadorResponse Response = null;
 
             return Response;
         }

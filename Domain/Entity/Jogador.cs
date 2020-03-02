@@ -1,11 +1,38 @@
 ﻿using Domain.Enum;
 using Domain.ValueObjects;
+using prmToolkit.NotificationPattern;
 using System;
 
 namespace Domain.Entity
 {
-    public class Jogador
+    public class Jogador : Notifiable
     {
+        public Jogador()
+        {
+
+        }
+
+        public Jogador(Email email, string senha)
+        {
+            Email = email;
+            Senha = senha;
+
+            new AddNotifications<Jogador>(this)
+                .IfNullOrInvalidLength(x => x.Senha, 6, 32, "A senha deve ter entre 6  e 32 caracteres") // Válida se o parametro passado tem esta dentro do range passada.
+                ;
+
+
+
+            if (String.IsNullOrEmpty(email.Endereco))
+            {
+                throw new Exception();
+            }
+            if (String.IsNullOrEmpty(senha))
+            {
+                throw new Exception();
+            }
+        }
+
         public Guid Id { get; set; }
 
         public Nome Nome { get; set; }
