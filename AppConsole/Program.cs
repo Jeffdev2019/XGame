@@ -18,12 +18,20 @@ namespace AppConsole
             Console.WriteLine("Criei Instancia do Serviço.0");
 
 
-            AutenticarJogadorRequest request = new AutenticarJogadorRequest("xpto@xmail.com", "1234567");
+            //AutenticarJogadorRequest request = new AutenticarJogadorRequest("xpto@xmail.com", "1234567");
             Console.WriteLine("Criei Instancia do meu objeto de request.");
 
+            var request = new AdicionarJogadorRequest()
+            {
+                Email = "jefferson.xj7@gmail.com",
+                PrimeiroNome = "Jefferson Victor",
+                UltimoNome = "Da Silva",
+                Senha = "J1234564s"
+            };
 
-            
-            var response = serviceJogador.AutenticarJogador(request);
+            var response = serviceJogador.AdicionarJogador(request);
+
+            //var response = serviceJogador.AutenticarJogador(request);
 
             Console.WriteLine("Serviço é válido - > " + serviceJogador.IsValid());
 
